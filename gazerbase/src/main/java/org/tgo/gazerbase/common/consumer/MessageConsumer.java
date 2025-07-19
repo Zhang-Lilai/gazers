@@ -1,6 +1,6 @@
 package org.tgo.gazerbase.common.consumer;
 
-import org.tgo.gazerbase.common.reciever.SignalReciever;
+import org.tgo.gazerbase.common.receiver.SignalReceiver;
 import org.tgo.gazerbase.standard.message.TgoStandardMessage;
 
 /**
@@ -8,11 +8,15 @@ import org.tgo.gazerbase.standard.message.TgoStandardMessage;
  */
 public interface MessageConsumer {
 
-    void setSignalReciever(SignalReciever signalReciever);
+    /**
+     * 将信号接收器与自身(信号消费者)绑定
+     * @param signalReceiver 需要绑定的信号接收器
+     */
+    void setSignalReceiver(SignalReceiver signalReceiver);
 
     /**
      * 获取消息
      * @param message 消息
      */
-    void recieveMessage(TgoStandardMessage message);
+    void receiveMessage(TgoStandardMessage message);
 }

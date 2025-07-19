@@ -1,7 +1,7 @@
 package org.tgo.gazerbase.tech.robot;
 
 import lombok.Setter;
-import org.tgo.gazerbase.common.reciever.SignalReciever;
+import org.tgo.gazerbase.common.receiver.SignalReceiver;
 import org.tgo.gazerbase.standard.message.TgoStandardMessage;
 
 /**
@@ -17,12 +17,12 @@ public class StandardControllableRobot implements ControllableRobot {
     /**
      * 信号接收器
      */
-    private SignalReciever signalReciever;
+    private SignalReceiver signalReceiver;
 
     /**
      * 机器人昵称
      */
-    private String name = "夏先生 2 号";
+    private String name = "夏先生2号";
 
     /**
      * 无参构造函数
@@ -33,12 +33,12 @@ public class StandardControllableRobot implements ControllableRobot {
 
     /**
      * 安装接收器
-     * @param signalReciever 接收器
+     * @param signalReceiver 接收器
      */
     @Override
-    public void setSignalReciever(SignalReciever signalReciever) {
-        this.signalReciever = signalReciever;
-        signalReciever.setMessageConsumer(this);
+    public void setSignalReceiver(SignalReceiver signalReceiver) {
+        this.signalReceiver = signalReceiver;
+        this.signalReceiver.setMessageConsumer(this);
     }
 
 
@@ -54,10 +54,10 @@ public class StandardControllableRobot implements ControllableRobot {
      * @param message 消息
      */
     @Override
-    public void recieveMessage(TgoStandardMessage message) {
+    public void receiveMessage(TgoStandardMessage message) {
         this.message = message;
         // TODO:下面方法是单线程场景下的临时模拟方法，以后 run()实现后要删除
-        whenMessageRecieved();
+        whenMessageReceived();
     }
 
     /**
@@ -130,7 +130,7 @@ public class StandardControllableRobot implements ControllableRobot {
      * 临时模拟的方法
      * 单线程场景中临时模拟的消息处理方案。
      */
-    private void whenMessageRecieved(){
+    private void whenMessageReceived(){
         Command command = commandParser();
         if(command!=null){
             switch (command.name()){
