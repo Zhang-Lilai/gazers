@@ -10,9 +10,4 @@ public class RobotTestConfiguration {
     public SophonMocker sophonMocker(){
         return new SophonMocker();
     }
-
-//    @Bean
-//    public StandardControllableRobot standardControllableRobot(){
-//        return new StandardControllableRobot(new SophonDrum());
-//    }
 }

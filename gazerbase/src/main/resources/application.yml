@@ -1,11 +1,14 @@
 server:
   port: 8088
 spring:
+  session:
+    jdbc:
+      initialize-schema: always
   application:
     name: gazerbase
   # PostgreSQL ?????
   datasource:
-    url: jdbc:postgresql://localhost:15432/postgres
+    url: jdbc:postgresql://localhost:5432/postgres
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: postgres
